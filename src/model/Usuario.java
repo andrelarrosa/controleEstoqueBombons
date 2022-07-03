@@ -13,17 +13,16 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "cliente")
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Table(name="usuario")
+@Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
 @Getter
 @Setter
-public class Cliente {
+public class Usuario {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 
 	private String nome;
-	private String cpf;
-	private String email;
-
+	private String login;
+	private String senha;
 }

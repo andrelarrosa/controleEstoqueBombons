@@ -13,17 +13,17 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "cliente")
+@Table(name = "produto")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Getter
 @Setter
-public class Cliente {
+public class Produto {
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-
-	private String nome;
-	private String cpf;
-	private String email;
-
+	
+	private String descricao;
+	private int qtdeEstoque;
+	private double preco;
 }
