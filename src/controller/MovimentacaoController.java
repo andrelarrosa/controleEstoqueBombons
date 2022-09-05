@@ -22,12 +22,12 @@ public class MovimentacaoController {
 	@Autowired
 	private MovimentacaoService movimentacaoService;
 	
-	@GetMapping(value="/movimentacao")
+	@GetMapping(value="/movimentacao/")
 	public void findAll(Pageable pageable){
 		
 	}
 	
-	@PostMapping(value="/movimentacao")
+	@PostMapping(value="/movimentacao/")
 	public void addMovimentacao(@RequestBody Movimentacao movimentacao){
 
 	}

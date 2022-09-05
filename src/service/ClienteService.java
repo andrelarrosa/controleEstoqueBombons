@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
-import exception.BadResourceException;
-import exception.ResourceAlreadyExistsException;
 import model.Cliente;
 import repository.ClienteRepository;
 
@@ -29,17 +26,8 @@ public class ClienteService {
 		return clienteRepository.findAll(pageable);
 	}
 	
-	public Cliente save(Cliente cliente) throws ResourceAlreadyExistsException, BadResourceException{
-		if(!StringUtils.isEmpty(cliente.getNome())) {
-			if(cliente.getId() != 0 && existsbyId(cliente.getId())) {
-				throw new ResourceAlreadyExistsException("Categoria com o id: "+cliente.getId()+"\n já existe");
-			}
-			return clienteRepository.save(cliente);
-		}else {
-			BadResourceException exc = new BadResourceException("Erro ao salvar categoria");
-			exc.addErrorMessage("Categoria está vazio ou é nulo");
-			throw exc;
-		}
+	public Cliente save(Cliente cliente){
+		return clienteRepository.save(cliente);
 	}
 	
 	public Cliente update(Cliente cliente){
