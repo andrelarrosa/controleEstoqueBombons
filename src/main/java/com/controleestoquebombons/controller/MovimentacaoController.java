@@ -1,7 +1,9 @@
 package com.controleestoquebombons.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,22 +23,23 @@ public class MovimentacaoController {
 	private MovimentacaoService movimentacaoService;
 	
 	@GetMapping(value="/movimentacao/")
-	public void findAll(Pageable pageable){
-		
+	public ResponseEntity<Page<Movimentacao>> findAll(Pageable pageable){
+		return ResponseEntity.ok(movimentacaoService.findAll(pageable));
 	}
 	
 	@PostMapping(value="/movimentacao/")
-	public void addMovimentacao(@RequestBody Movimentacao movimentacao){
-
+	public Movimentacao addMovimentacao(@RequestBody Movimentacao movimentacao){
+		return movimentacaoService.save(movimentacao);
 	}
 	
 	@PutMapping(value="/movimentacao/{id}")
-	public void updateMovimentacao(@RequestBody Movimentacao movimentacao, @PathVariable long id){
-
+	public Movimentacao updateMovimentacao(@RequestBody Movimentacao movimentacao, @PathVariable long id){
+		return movimentacaoService.update(movimentacao);
 	}
 	
 	@DeleteMapping(path="/movimentacao/{id}")
-	public void deleteMovimentacaoById(@PathVariable long id){
-		
+	public ResponseEntity<Void> deleteMovimentacaoById(@PathVariable long id){
+		movimentacaoService.deleteById(id);
+		return ResponseEntity.ok().build();
 	}
 }

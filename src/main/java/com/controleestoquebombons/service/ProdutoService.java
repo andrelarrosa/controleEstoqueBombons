@@ -31,7 +31,7 @@ public class ProdutoService {
 	}
 	
 	public Produto update(Produto produto){
-	    return produtoRepository.save(produto);
+	    return produtoRepository.saveAndFlush(produto);
 	}
 	
 	public void deleteById(Long id){

@@ -31,7 +31,7 @@ public class ClienteService {
 	}
 	
 	public Cliente update(Cliente cliente){
-	    return clienteRepository.save(cliente);
+	    return clienteRepository.saveAndFlush(cliente);
 	}
 	
 	public void deleteById(Long id){

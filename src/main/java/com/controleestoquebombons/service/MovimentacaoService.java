@@ -32,7 +32,7 @@ public class MovimentacaoService {
 	}
 	
 	public Movimentacao update(Movimentacao movimentacao){
-	    return movimentacaoRepository.save(movimentacao);
+	    return movimentacaoRepository.saveAndFlush(movimentacao);
 	}
 	
 	public void deleteById(Long id){
